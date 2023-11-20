@@ -1,10 +1,119 @@
 {
-  "name": "DI",
-  "uri": "http://www.omg.org/spec/DD/20100524/DI",
-  "prefix": "di",
+  "name": "ODDI",
+  "uri": "http://tk/schema/odDi",
+  "prefix": "odDi",
+  "xml": {
+    "tagAlias": "lowerCase"
+  },
   "types": [
     {
-      "name": "DiagramElement",
+      "name": "OdRootBoard",
+      "properties": [
+        {
+          "name": "plane",
+          "type": "OdPlane",
+          "redefines": "Board#rootElement"
+        },
+        {
+          "name": "labelStyle",
+          "type": "OdLabelStyle",
+          "isMany": true
+        }
+      ],
+      "superClass": ["Board"]
+    },
+    {
+      "name": "OdPlane",
+      "properties": [
+        {
+          "name": "boardElement",
+          "isAttr": true,
+          "isReference": true,
+          "type": "od:BoardElement",
+          "redefines": "BoardElement#modelElement"
+        }
+      ],
+      "superClass": ["Plane"]
+    },
+    {
+      "name": "OdShape",
+      "properties": [
+        {
+          "name": "boardElement",
+          "isAttr": true,
+          "isReference": true,
+          "type": "od:BoardElement",
+          "redefines": "BoardElement#modelElement"
+        },
+        {
+          "name": "label",
+          "type": "OdLabel"
+        }
+      ],
+      "superClass": ["LabeledShape"]
+    },
+    {
+      "name": "Link",
+      "properties": [
+        {
+          "name": "label",
+          "type": "OdLabel"
+        },
+        {
+          "name": "boardElement",
+          "isAttr": true,
+          "isReference": true,
+          "type": "od:BoardElement",
+          "redefines": "BoardElement#modelElement"
+        },
+        {
+          "name": "sourceElement",
+          "isAttr": true,
+          "isReference": true,
+          "type": "od:BoardElement",
+          "redefines": "Edge#source"
+        },
+        {
+          "name": "targetElement",
+          "isAttr": true,
+          "isReference": true,
+          "type": "od:BoardElement",
+          "redefines": "Edge#target"
+        },
+        {
+          "name": "messageVisibleKind",
+          "type": "MessageVisibleKind",
+          "isAttr": true,
+          "default": "initiating"
+        }
+      ],
+      "superClass": ["LabeledEdge"]
+    },
+    {
+      "name": "OdLabel",
+      "properties": [
+        {
+          "name": "labelStyle",
+          "type": "OdLabelStyle",
+          "isAttr": true,
+          "isReference": true,
+          "redefines": "BoardElement#style"
+        }
+      ],
+      "superClass": ["Label"]
+    },
+    {
+      "name": "OdLabelStyle",
+      "properties": [
+        {
+          "name": "font",
+          "type": "dc:Font"
+        }
+      ],
+      "superClass": ["Style"]
+    },
+    {
+      "name": "BoardElement",
       "isAbstract": true,
       "properties": [
         {
@@ -14,19 +123,15 @@
           "type": "String"
         },
         {
-          "name": "extension",
-          "type": "Extension"
-        },
-        {
-          "name": "owningDiagram",
-          "type": "Diagram",
+          "name": "owningBoard",
+          "type": "Board",
           "isReadOnly": true,
           "isVirtual": true,
           "isReference": true
         },
         {
           "name": "owningElement",
-          "type": "DiagramElement",
+          "type": "BoardElement",
           "isReadOnly": true,
           "isVirtual": true,
           "isReference": true
@@ -44,40 +149,29 @@
           "isReadOnly": true,
           "isVirtual": true,
           "isReference": true
-        },
-        {
-          "name": "ownedElement",
-          "type": "DiagramElement",
-          "isReadOnly": true,
-          "isMany": true,
-          "isVirtual": true
         }
       ]
     },
     {
       "name": "Node",
       "isAbstract": true,
-      "superClass": [
-        "DiagramElement"
-      ]
+      "superClass": ["BoardElement"]
     },
     {
       "name": "Edge",
       "isAbstract": true,
-      "superClass": [
-        "DiagramElement"
-      ],
+      "superClass": ["BoardElement"],
       "properties": [
         {
           "name": "source",
-          "type": "DiagramElement",
+          "type": "od:BoardElement",
           "isReadOnly": true,
           "isVirtual": true,
           "isReference": true
         },
         {
           "name": "target",
-          "type": "DiagramElement",
+          "type": "od:BoardElement",
           "isReadOnly": true,
           "isVirtual": true,
           "isReference": true
@@ -94,7 +188,7 @@
       ]
     },
     {
-      "name": "Diagram",
+      "name": "Board",
       "isAbstract": true,
       "properties": [
         {
@@ -105,17 +199,12 @@
         },
         {
           "name": "rootElement",
-          "type": "DiagramElement",
+          "type": "BoardElement",
           "isReadOnly": true,
           "isVirtual": true
         },
         {
           "name": "name",
-          "isAttr": true,
-          "type": "String"
-        },
-        {
-          "name": "documentation",
           "isAttr": true,
           "type": "String"
         },
@@ -136,9 +225,7 @@
     {
       "name": "Shape",
       "isAbstract": true,
-      "superClass": [
-        "Node"
-      ],
+      "superClass": ["Node"],
       "properties": [
         {
           "name": "bounds",
@@ -149,14 +236,12 @@
     {
       "name": "Plane",
       "isAbstract": true,
-      "superClass": [
-        "Node"
-      ],
+      "superClass": ["Node"],
       "properties": [
         {
           "name": "planeElement",
-          "type": "DiagramElement",
-          "subsettedProperty": "DiagramElement-ownedElement",
+          "type": "BoardElement",
+          "subsettedProperty": "BoardElement-ownedElement",
           "isMany": true
         }
       ]
@@ -164,15 +249,13 @@
     {
       "name": "LabeledEdge",
       "isAbstract": true,
-      "superClass": [
-        "Edge"
-      ],
+      "superClass": ["Edge"],
       "properties": [
         {
           "name": "ownedLabel",
           "type": "Label",
           "isReadOnly": true,
-          "subsettedProperty": "DiagramElement-ownedElement",
+          "subsettedProperty": "BoardElement-ownedElement",
           "isMany": true,
           "isVirtual": true
         }
@@ -181,15 +264,13 @@
     {
       "name": "LabeledShape",
       "isAbstract": true,
-      "superClass": [
-        "Shape"
-      ],
+      "superClass": ["Shape"],
       "properties": [
         {
           "name": "ownedLabel",
           "type": "Label",
           "isReadOnly": true,
-          "subsettedProperty": "DiagramElement-ownedElement",
+          "subsettedProperty": "BoardElement-ownedElement",
           "isMany": true,
           "isVirtual": true
         }
@@ -198,9 +279,7 @@
     {
       "name": "Label",
       "isAbstract": true,
-      "superClass": [
-        "Node"
-      ],
+      "superClass": ["Node"],
       "properties": [
         {
           "name": "bounds",
@@ -231,8 +310,6 @@
       ]
     }
   ],
-  "associations": [],
-  "xml": {
-    "tagAlias": "lowerCase"
-  }
+  "enumerations": [],
+  "associations": []
 }
