@@ -5,6 +5,7 @@
   "scripts": {
     "all": "run-s lint test distro",
     "lint": "eslint .",
+    "fixLint": "eslint . --fix",
     "dev": "npm test -- --watch",
     "test": "mocha --reporter=spec --recursive",
     "distro": "run-s build test:build",
