@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<od:definitions xmlns:od="http://tk/schema/od" xmlns:odDi="http://tk/schema/odDi" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC">
+  <od:odBoard id="Board_debug">
+    <od:link name="components" id="Link_1" type="components" sourceRef="Object_1" targetRef="Object_2" />
+    <od:object name="folding_wall_table:Product" id="Object_1" attributeValues="cost=5">
+      <od:links>Link_1</od:links>
+    </od:object>
+    <od:object name="1:QuantifiedComponent" id="Object_2" attributeValues="quantity=1" />
+  </od:odBoard>
+</od:definitions>
