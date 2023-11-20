@@ -19,7 +19,7 @@ const srcEntry = pkg.source;
 
 const umdDist = pkg['umd:main'];
 
-const umdName = 'BpmnModdle';
+const umdName = 'ODModdle';
 
 export default [
 

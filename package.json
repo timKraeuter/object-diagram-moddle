@@ -6,7 +6,7 @@
     "all": "run-s lint test distro",
     "lint": "eslint .",
     "dev": "npm test -- --watch",
-    "test": "mocha --reporter=spec --recursive test/spec test/integration",
+    "test": "mocha --reporter=spec --recursive",
     "distro": "run-s build test:build",
     "build": "rollup -c",
     "test:build": "mocha --reporter=spec --recursive test/distro",
@@ -19,7 +19,7 @@
   },
   "main": "dist/index.cjs",
   "module": "dist/index.esm.js",
-  "umd:main": "dist/bpmn-moddle.umd.cjs",
+  "umd:main": "dist/object-diagram-moddle.umd.cjs",
   "source": "lib/index.js",
   "keywords": [
     "object diagram",

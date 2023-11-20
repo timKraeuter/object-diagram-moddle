@@ -5,19 +5,19 @@ const {
 const pkg = require('../../package.json');
 
 
-describe('bpmn-moddle', function() {
+describe('object-diagram-moddle', function() {
 
   it('should expose CJS bundle', function() {
-    const BpmnModdle = require('../../' + pkg['main']);
+    const ODModdle = require('../../' + pkg['main']);
 
-    expect(new BpmnModdle()).to.exist;
+    expect(new ODModdle()).to.exist;
   });
 
 
   it('should expose UMD bundle', function() {
-    const BpmnModdle = require('../../' + pkg['umd:main']);
+    const ODModdle = require('../../' + pkg['umd:main']);
 
-    expect(new BpmnModdle()).to.exist;
+    expect(new ODModdle()).to.exist;
   });
 
 });
