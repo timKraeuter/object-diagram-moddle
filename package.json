@@ -1,6 +1,6 @@
 {
   "name": "object-diagram-moddle",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A moddle wrapper for BPMN 2.0",
   "scripts": {
     "all": "run-s lint test distro",
@@ -50,9 +50,9 @@
     "rollup-plugin-terser": "^7.0.2"
   },
   "dependencies": {
-    "min-dash": "^4.0.0",
-    "moddle": "^6.0.0",
-    "moddle-xml": "^10.0.0"
+    "min-dash": "^4.1.1",
+    "moddle": "^6.2.3",
+    "moddle-xml": "^10.1.0"
   },
   "files": [
     "dist",
