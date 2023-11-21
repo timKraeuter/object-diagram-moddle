@@ -5,7 +5,7 @@ import {
   readFile
 } from '../../helper.js';
 
-describe('object-diagram-moddle - read', function () {
+describe('object-diagram-moddle - read', function() {
 
   const moddle = createModdle();
 
@@ -18,11 +18,11 @@ describe('object-diagram-moddle - read', function () {
     return read(contents, root, opts);
   }
 
-  describe('should import types', function () {
+  describe('should import types', function() {
 
-    describe('object diagram', function () {
+    describe('object diagram', function() {
 
-      it('objects and links', async function () {
+      it('objects and links', async function() {
 
         // given
 
@@ -33,7 +33,7 @@ describe('object-diagram-moddle - read', function () {
 
         const expected = {
           $type: 'od:Definitions',
-          rootElements: [{
+          rootElements: [ {
             $type: 'od:OdBoard',
             id: 'Board_debug',
             boardElements: [
@@ -41,24 +41,25 @@ describe('object-diagram-moddle - read', function () {
                 $type: 'od:Link',
                 name: 'components',
                 id: 'Link_1',
-                type: "components"
+                type: 'components'
               },
               {
                 $type: 'od:Object',
                 name: 'folding_wall_table:Product',
                 id: 'Object_1',
-                attributeValues: "cost=5",
+                attributeValues: 'cost=5',
               },
               {
                 $type: 'od:Object',
                 name: '1:QuantifiedComponent',
                 id: 'Object_2',
-                attributeValues: "quantity=1",
+                attributeValues: 'quantity=1',
               }
             ],
           }
           ]
         };
+
         // then
         expect(rootElement).to.jsonEqual(expected);
       });
