@@ -18,7 +18,20 @@ describe('object-diagram-moddle - read', function() {
       // when
       const modelString = readFile('test/fixtures/roundtrip.xml');
       let model = await moddle.fromXML(modelString);
-      let toXML = await moddle.toXML(model.rootElement);
+      let toXML = await moddle.toXML(model.rootElement, { format: true });
+
+      // then
+      expect(toXML.xml).to.equal(modelString);
+    });
+
+    it('colors', async function() {
+
+      // given
+
+      // when
+      const modelString = readFile('test/fixtures/colors.xml');
+      let model = await moddle.fromXML(modelString);
+      let toXML = await moddle.toXML(model.rootElement, { format: true });
 
       // then
       expect(toXML.xml).to.equal(modelString);

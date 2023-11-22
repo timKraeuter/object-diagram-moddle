@@ -1,6 +1,6 @@
 {
   "name": "object-diagram-moddle",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A moddle wrapper for BPMN 2.0",
   "scripts": {
     "all": "run-s lint test distro",

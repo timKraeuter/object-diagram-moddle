@@ -1,0 +1,41 @@
+{
+  "name": "Colors for object diagrams",
+  "uri": "http://tk/schema/bioc",
+  "prefix": "bioc",
+  "types": [
+    {
+      "name": "ColoredShape",
+      "extends": [ "odDi:OdShape" ],
+      "properties": [
+        {
+          "name": "stroke",
+          "isAttr": true,
+          "type": "String"
+        },
+        {
+          "name": "fill",
+          "isAttr": true,
+          "type": "String"
+        }
+      ]
+    },
+    {
+      "name": "ColoredEdge",
+      "extends": [ "odDi:Link" ],
+      "properties": [
+        {
+          "name": "stroke",
+          "isAttr": true,
+          "type": "String"
+        },
+        {
+          "name": "fill",
+          "isAttr": true,
+          "type": "String"
+        }
+      ]
+    }
+  ],
+  "enumerations": [],
+  "associations": []
+}

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<od:definitions xmlns:od="http://tk/schema/od" xmlns:odDi="http://tk/schema/odDi" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:bioc="http://tk/schema/bioc">
+  <od:odBoard id="Board_debug">
+    <od:link name="components" id="Link_Object_2669_to_Object_2840_type_components" type="components" sourceRef="Object_2669" targetRef="Object_2669" />
+    <od:object name="folding_wall_table:Product" id="Object_2669" attributeValues="cost=5&#10;name=&#34;Folding wall table&#34;">
+      <od:links>Link_Object_2669_to_Object_2840_type_components</od:links>
+    </od:object>
+  </od:odBoard>
+  <odDi:odRootBoard id="RootBoard_debug">
+    <odDi:odPlane id="Plane_debug" boardElement="Board_debug">
+      <odDi:Link id="Link_Object_2669_to_Object_2840_type_components_di" boardElement="Link_Object_2669_to_Object_2840_type_components" bioc:stroke="#831311" bioc:fill="#ffcdd2">
+        <odDi:waypoint x="522" y="198" />
+        <odDi:waypoint x="521.9" y="233.60000000000002" />
+        <odDi:waypoint x="630" y="233.60000000000002" />
+        <odDi:waypoint x="630" y="198" />
+        <odDi:odLabel>
+          <dc:Bounds x="520" y="240" width="82" height="18" />
+        </odDi:odLabel>
+      </odDi:Link>
+      <odDi:OdShape id="Object_2669_di" boardElement="Object_2669" bioc:stroke="#831311" bioc:fill="#ffcdd2">
+        <dc:Bounds x="434" y="120" width="221" height="78" />
+      </odDi:OdShape>
+    </odDi:odPlane>
+  </odDi:odRootBoard>
+</od:definitions>
