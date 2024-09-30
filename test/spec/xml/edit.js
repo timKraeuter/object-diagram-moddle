@@ -12,7 +12,7 @@ import {
 
 describe('object-diagram-moddle - edit', function() {
 
-  var moddle = createModdle();
+  const moddle = createModdle();
 
   function fromFile(file) {
     return readFromFile(moddle, file);
@@ -24,14 +24,14 @@ describe('object-diagram-moddle - edit', function() {
     it('should serialize changed name', async function() {
 
       // given
-      var {
+      const {
         rootElement: definitions
       } = await fromFile('test/fixtures/simple.xml');
 
       definitions.rootElements[0].name = 'OTHER NAME';
 
       // when
-      var {
+      const {
         xml
       } = await toXML(definitions, { format: true });
 

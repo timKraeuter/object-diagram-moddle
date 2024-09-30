@@ -1,12 +1,13 @@
-import { terser } from 'rollup-plugin-terser';
-
-import { importAssertions } from 'acorn-import-assertions';
-
 import resolve from '@rollup/plugin-node-resolve';
-import commonjs from '@rollup/plugin-commonjs';
 import json from '@rollup/plugin-json';
 
-import pkg from './package.json';
+import fs from 'node:fs';
+
+const pkg = JSON.parse(fs.readFileSync('./package.json'));
+
+const pkgExports = pkg.exports['.'];
+
+const srcEntry = 'lib/index.js';
 
 function pgl(plugins = []) {
   return [
@@ -15,47 +16,13 @@ function pgl(plugins = []) {
   ];
 }
 
-const srcEntry = pkg.source;
-
-const umdDist = pkg['umd:main'];
-
-const umdName = 'ODModdle';
 
 export default [
-
-  // browser-friendly UMD build
-  {
-    input: srcEntry,
-    output: {
-      file: umdDist.replace(/\.js$/, '.prod.js'),
-      format: 'umd',
-      name: umdName
-    },
-    plugins: pgl([
-      resolve(),
-      commonjs(),
-      terser()
-    ]),
-    acornInjectPlugins: [ importAssertions ]
-  },
-  {
-    input: srcEntry,
-    output: {
-      file: umdDist,
-      format: 'umd',
-      name: umdName
-    },
-    plugins: pgl([
-      resolve(),
-      commonjs()
-    ]),
-    acornInjectPlugins: [ importAssertions ]
-  },
   {
     input: srcEntry,
     output: [
-      { file: pkg.main, format: 'cjs', exports: 'default' },
-      { file: pkg.module, format: 'es', exports: 'default' }
+      { file: pkgExports.require, format: 'cjs', sourcemap: true },
+      { file: pkgExports.import, format: 'es', sourcemap: true }
     ],
     external: [
       'min-dash',
@@ -68,7 +35,6 @@ export default [
           'bpmn-in-color-moddle'
         ]
       }),
-    ]),
-    acornInjectPlugins: [ importAssertions ]
+    ])
   }
 ];

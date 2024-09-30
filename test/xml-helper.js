@@ -9,7 +9,7 @@ export function fromFile(moddle, file) {
 }
 
 export function fromFilePart(moddle, file, type) {
-  var fileContents = readFile(file);
+  const fileContents = readFile(file);
 
   return moddle.fromXML(fileContents, type);
 }
