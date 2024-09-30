@@ -21,7 +21,7 @@ describe('object-diagram-moddle - read', function() {
       let toXML = await moddle.toXML(model.rootElement, { format: true });
 
       // then
-      expect(toXML.xml).to.equal(modelString);
+      expect(toXML.xml.replace(/\n/g, '\r\n')).to.equal(modelString); // Normalize line endings for windows users
     });
 
     it('colors', async function() {
@@ -34,7 +34,7 @@ describe('object-diagram-moddle - read', function() {
       let toXML = await moddle.toXML(model.rootElement, { format: true });
 
       // then
-      expect(toXML.xml).to.equal(modelString);
+      expect(toXML.xml.replace(/\n/g, '\r\n')).to.equal(modelString); // Normalize line endings for windows users
     });
 
   });
