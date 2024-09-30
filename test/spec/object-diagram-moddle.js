@@ -6,14 +6,14 @@ import {
 
 describe('object-diagram-moddle', function() {
 
-  var moddle = createModdle();
+  const moddle = createModdle();
 
   describe('parsing', function() {
 
     it('should publish type', function() {
 
       // when
-      var type = moddle.getType('od:Object');
+      const type = moddle.getType('od:Object');
 
       // then
       expect(type).to.exist;
@@ -23,12 +23,12 @@ describe('object-diagram-moddle', function() {
     it('should redefine property', function() {
 
       // when
-      var type = moddle.getType('odDi:OdShape');
+      const type = moddle.getType('odDi:OdShape');
 
       // then
       expect(type).to.exist;
 
-      var descriptor = type.$descriptor;
+      const descriptor = type.$descriptor;
 
       expect(descriptor).to.exist;
       expect(
