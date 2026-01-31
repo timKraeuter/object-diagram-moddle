@@ -1,6 +1,6 @@
 {
   "name": "object-diagram-moddle",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A moddle wrapper for BPMN 2.0",
   "scripts": {
     "all": "run-s lint test",
@@ -15,7 +15,7 @@
   "type": "module",
   "repository": {
     "type": "git",
-    "url": "https://github.com/timKraeuter/object-diagram-moddle"
+    "url": "git+https://github.com/timKraeuter/object-diagram-moddle.git"
   },
   "exports": {
     ".": {
