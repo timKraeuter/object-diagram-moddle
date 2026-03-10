@@ -64,5 +64,8 @@
   "files": [
     "dist",
     "resources"
-  ]
+  ],
+  "overrides": {
+    "serialize-javascript": "^7.0.3"
+  }
 }
